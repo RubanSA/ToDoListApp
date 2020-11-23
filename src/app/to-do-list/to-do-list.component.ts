@@ -8,10 +8,15 @@ import { from } from 'rxjs';
   styleUrls: ['./to-do-list.component.css']
 })
 export class ToDoListComponent implements OnInit {
-
+  toDoListItem: ToDoListItem ;
   constructor() { }
 
   ngOnInit(): void {
+    this.toDoListItem =  {
+      id: 1,
+      name: "Сделать презентацию на завтра",
+      isCompleted: false
+    }
   }
 
 }
