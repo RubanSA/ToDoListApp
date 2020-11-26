@@ -13,4 +13,11 @@ export class AppComponent {
   getTitle = function ():string {
     return this.title;
   }
+
+  fontSize: number;
+
+  fontSizeSubscriberFcn(val: number){
+    this.fontSize = val;
+  }
+
 }

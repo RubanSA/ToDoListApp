@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-style-example',
@@ -8,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
 export class StyleExampleComponent implements OnInit {
   header: string;
   text: string;
-  size: number;
+
+  @Output() fontChanged: EventEmitter<number> = new EventEmitter<number>();
+  private _size: number;
+
+  public get size():number{
+    return this._size;
+  }
+
+  public set size(val: number){
+    this._size = val;
+    this.fontChanged.emit(this._size);
+    //this.stylesDescription.fontSize = this.size+"px";
+  }
   styles = {
     verdanaFont: true,
     segoeFont: true
@@ -21,6 +33,9 @@ export class StyleExampleComponent implements OnInit {
     this.header = "Angular ngStyle directive";
     this.text = "Angular - очень популярный фреймворк, позволяющий собирать приложение из компонентов";
     this.size = 14;
+    this.fontChanged.subscribe((arg1)=>{
+      this.stylesDescription.fontSize = arg1+"px";
+    })
   }
 
   toggle(){
@@ -28,13 +43,12 @@ export class StyleExampleComponent implements OnInit {
   }
 
   up(){
-    this.size++;
-    this.stylesDescription.fontSize = this.size+"px";
+    this.size++;   
   }
 
   down(){
     this.size--;
-    this.stylesDescription.fontSize = this.size+"px";
+    //this.stylesDescription.fontSize = this.size+"px";
   }
 
 }

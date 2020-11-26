@@ -5,5 +5,8 @@
 <hr/>
 <app-to-do-list></app-to-do-list>
 <hr>
-<app-style-example></app-style-example>
+<p>Font size: {{fontSize}} px</p>
+<app-style-example (fontChanged)="fontSizeSubscriberFcn($event)"></app-style-example>
+<hr>
+<app-work-with-service></app-work-with-service>
 

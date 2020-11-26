@@ -1,11 +1,12 @@
 <div class="toDo">
     <h3>{{toDoListItem.id}}. {{toDoListItem.name}}</h3>
     <div>Is Completed: {{toDoListItem.isCompleted}}</div>
-    <img src="../../assets/images/image.jpg"/>
+    <img [src]="imageUrl"/>
+    <app-to-do-item-form [innerToDoItem]="selectedJob"></app-to-do-item-form>
     <hr>
     <div *ngIf="jobs.length>0">
         <ul class="list-group">Список дел:
-            <li *ngFor="let job of jobs" class="list-group-item list-group-item-action" (mouseover)="changeStyle(job)" [class.active]="job==selectedJob">
+            <li *ngFor="let job of jobs" class="list-group-item list-group-item-action" (click)="changeStyle(job)" [class.active]="job==selectedJob">
                 {{job.id}}. {{job.name}}
             </li>
         </ul>

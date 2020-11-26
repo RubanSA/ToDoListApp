@@ -14,6 +14,7 @@ export class ToDoListComponent implements OnInit {
   jobs: ToDoListItem[] = ITEMS;
   selectedJob: ToDoListItem;
   car: string;
+  imageUrl: string = "../../assets/images/image.jpg";
   constructor() { }
 
   ngOnInit(): void {
@@ -28,7 +29,7 @@ export class ToDoListComponent implements OnInit {
   }
 
   changeStyle(i){
-    //console.log(i);
+    console.log(i);
     this.selectedJob = i;
   }
 
